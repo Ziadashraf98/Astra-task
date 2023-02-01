@@ -34,6 +34,8 @@ Route::group(['middleware'=>'auth'],function(){
         'subcategories'=>SubCategoryController::class,
         'products'=>ProductController::class,
     ]);
+
+    Route::get('/category/{id}' , [ProductController::class , 'getSubCategories']);
 });
 
 

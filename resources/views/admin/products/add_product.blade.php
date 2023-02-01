@@ -59,11 +59,7 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleSelectGender">SubCategories</label>
-                  <select name="subcategory_id" class="form-control" id="exampleSelectGender">
-                    <option value="{{null}}">select SubCategory</option>
-                    @foreach($subcategories as $subcategory)
-                    <option value={{$subcategory->id}}>{{$subcategory->name}}</option>
-                    @endforeach
+                  <select name="subcategory" class="form-control" id="exampleSelectGender">
                   </select>
                 </div>
                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
@@ -77,6 +73,34 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    @include('includes.scripts')
-  </body>
+    
+  @include('includes.scripts')
+    
+    <script>
+      $(document).ready(function() {
+          $('select[name="category_id"]').on('change', function() {
+              var category_id = $(this).val();
+              if (category_id) {
+                  $.ajax({
+                      url: "{{ URL::to('category') }}/" + category_id,
+                      type: "GET",
+                      // dataType: "json",
+                      success: function(data) {
+                          $('select[name="subcategory"]').empty();
+                          $.each(data, function(key, value) {
+                              $('select[name="subcategory"]').append('<option value="' +
+                                  value + '">' + value + '</option>');
+                          });
+                      },
+                  });
+
+              } else {
+                  console.log('AJAX load did not work');
+              }
+          });
+
+      });
+  </script>
+  
+</body>
 </html>

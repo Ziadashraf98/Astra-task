@@ -24,10 +24,10 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|unique:products,name,' . $this->name . ',id,subcategory_id,' . $this->subcategory_id,
+            'name'=>'required|unique:products,name,' . $this->name . ',id,subcategory,' . $this->subcategory,
             'name'=>'required|unique:products,name,' . $this->name . ',id,category_id,' . $this->category_id,
             'category_id'=>'required',
-            'subcategory_id'=>'required',
+            'subcategory'=>'required',
         ];
     }
 }

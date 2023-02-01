@@ -20,8 +20,7 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::whereHas('subcategories')->get();
-        $subcategories = SubCategory::all();
-        return view('admin.products.add_product' , compact('categories' , 'subcategories'));
+        return view('admin.products.add_product' , compact('categories'));
     }
 
     public function store(ProductRequest $request)
@@ -29,5 +28,11 @@ class ProductController extends Controller
         $validation = $request->validated();
         Product::create($validation);
         return redirect()->route('products.index')->with('success' , 'Product Added Successfully');
+    }
+
+    public function getSubCategories($id)
+    {
+        $subcategories = SubCategory::where('category_id' , $id)->pluck('name');
+        return $subcategories;
     }
 }

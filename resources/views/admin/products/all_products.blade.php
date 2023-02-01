@@ -51,7 +51,7 @@
                             <td>{{$i}}</td>
                             <td>{{$product->name}}</td>
                             <td>{{$product->category->name}}</td>
-                            <td>{{$product->subcategory->name}}</td>
+                            <td>{{$product->subcategory}}</td>
                             {{-- <td style="padding: 20px;">
                               <a class="btn btn-success" href="{{route('categories.edit' , $category->id)}}">Edit</a>
                             </td> --}}
