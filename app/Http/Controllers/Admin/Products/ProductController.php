@@ -32,7 +32,7 @@ class ProductController extends Controller
 
     public function getSubCategories($id)
     {
-        $subcategories = SubCategory::where('category_id' , $id)->pluck('name');
+        $subcategories = SubCategory::where('category_id' , $id)->pluck('id' , 'name');
         return $subcategories;
     }
 }

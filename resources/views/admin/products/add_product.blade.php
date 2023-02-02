@@ -59,7 +59,7 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleSelectGender">SubCategories</label>
-                  <select name="subcategory" class="form-control" id="exampleSelectGender">
+                  <select name="subcategory_id" class="form-control" id="exampleSelectGender">
                   </select>
                 </div>
                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
@@ -86,10 +86,10 @@
                       type: "GET",
                       // dataType: "json",
                       success: function(data) {
-                          $('select[name="subcategory"]').empty();
+                          $('select[name="subcategory_id"]').empty();
                           $.each(data, function(key, value) {
-                              $('select[name="subcategory"]').append('<option value="' +
-                                  value + '">' + value + '</option>');
+                              $('select[name="subcategory_id"]').append('<option value="' +
+                                  value + '">' + key + '</option>');
                           });
                       },
                   });
